@@ -1,0 +1,132 @@
+Go (golang)
+- Strong and statically typed
+- Excellent community
+- Key features
+  - Simplicity
+  - Fast compile times
+  - Garbage collected language (memory managed for you)
+  - Built-in concurrency
+  - Compile to standalone binaries
+
+Resources for learning:
+- https://golang.org
+- https://golangbridge.org
+- https://play.golang.org 
+
+Variables
+- Variable declaration
+  - var foo int
+  - var foo int = 42
+  - foo := 42
+  - Blocks
+    var (
+      actorName    string = "Carlos"
+      companion    string = "Sara"
+      doctorNumber int    = 3
+      season       int    = 11
+    )
+- Can't redeclare variables, but can shadow them (scope)
+- All variables must be used
+- Visibility
+  - lower case fist letter for package scope
+  - upper case first letter to export globally
+  - no private scope
+- Naming conventions
+  - Pascar or camelCase
+    - Capitalize acronyms (HTTP, URL)
+  - As short as reasonable
+    - longer names for longer lives
+- Type conversions
+  - destinationType(variable)
+  - use strconv package for strings
+
+Primitives
+- Boolean type
+  - Values are true or false
+  - Not an alias for other types
+  - Zero value is false
+- Numeric types
+  - Integers
+    - Signed Integers
+      - int type has varying size, but min 32 bits
+      - 8 int (int8) trough 64 bit (int64)
+    - Unsigned Integers
+      - 8 bit (byte and uint8) trough 32 bit (uint32)
+    - Arithmetic operations
+      - Addition, sustraction, multiplication, division, remainder
+    - Bitwise operations 
+      - And, or, xor and not
+    - Zero value is 9
+    - Can't mix types in same family
+  - Floating point numbers
+    - Zero value is 0
+    - 32 and 64 bit versions
+    - Literal styles
+      - Decimal (3.14)
+      - Exponential (13e18 or 2E10)
+      - Mixed (13.72e12)
+      - Addition, sustraction, multiplication, division
+  - Complex numbers
+    - Zero value is 0+0i
+    - 64 and 128 bit versions
+    - Built-in functions
+      - complex
+      - real - get real part as float
+      - imag - get imaginary part as float
+      - Addition, sustraction, multiplication, division
+- Text types
+  - Strings
+    - UTF-8
+    - Immutable
+    - Can be concatenated with plus (+) operator
+    - Can be converted to []byte
+  - Rune
+    - UTF-32
+    - Alias for int32
+    - Special methods normally required to process
+      - e.g. strings.Reader#ReadRune
+
+Constants
+- Immutable, but can be shadowed
+- Replaced by the compiler at compile time
+  - Value must be calculable at compile tiem
+- Naming like variables
+- Typed constants work lie immutable variables
+  - Can interoperate only with same type
+- Untype constants work like literals
+  - Can inteoperate with similar types
+- Enumerated constants
+  - iota -> allows related constants to be created easily
+  - iota starts at 0 in each const block and increments by one
+  - Watch out of constan values that match zero values for variables
+- Enumeration expressions
+  - Operations can be determined at compile time are allowed
+    - Arithmetic
+    - Bitwise operations
+    - Bitshifting
+
+Arrays and Slices
+- Arrays
+  - Collection of times with same type
+  - Fixed size
+  - Declaration styles
+    - a := [3]int{1, 2, 3}
+    - a := [...]int{1, 2, 3}
+    - var a [3]int
+  - Access via zero-based index
+    - a := [3]int{1, 2, 3} // a[1] == 2
+  - len function returns size of array
+  - Copies refer to different underlying data
+- Slices
+  - Backed by array
+  - Creation styles
+    - Slice existing array or slice
+    - Literaly style
+    - Via make function
+      - a := make([]intk, 10) // create slice with capacity and length == 10
+      - a := make([]intk, 10, 100) // slice with length = 10 and capacity == 100
+    - len function returns length of slice
+    - cap function return length of underlying array
+    - append function to add elements to slice
+      - May cause expensive copy operation if underlying array is too small
+    - Copies refer to same underlying array
